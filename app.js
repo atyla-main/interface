@@ -1,3 +1,8 @@
+var _ = require('lodash');
+var bodyParser = require('body-parser');
+var jwt = require('jsonwebtoken');
+var passport = require('passport');
+var passportJWT = require('passport-jwt');
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -8,15 +13,32 @@ var api = require('./routes/api')
 
 var indexRouter = require('./routes/index');
 
+var ExtractJwt = passportJWT.ExtractJwt;
+var JwtStrategy = passportJWT.Strategy;
+var atylaJwt = require('./strategies/jwt-strategy.js');
+
+//model for auth
+const User = require('./models').User;
+
 var app = express();
+app.use(logger('dev'));
+
+var jwtOptions = {}
+
+jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('jwt')
+jwtOptions.secretOrKey = 'maisonBleue';
+
+var strategy = atylaJwt.jwtStrategy(jwtOptions);
+
+passport.use(strategy);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(passport.initialize());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
@@ -26,7 +48,30 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api', api);
+app.post('/login', async function(req, res) {
+  const attributes = req.body.data.attributes;
+  if(attributes.email && attributes.password) {
+    var email = attributes.email;
+    var password = attributes.password;
+  }
+
+  var user = await User.findOne({ where: { email: email } });
+  if (!user) {
+    res.status(401).json({
+      message: 'No such user found'
+    });
+  }
+
+  if (user.password == password) {
+    var payload = { id: user.id };
+    var token = jwt.sign(payload, jwtOptions.secretOrKey, { expiresIn: '60m' });
+    res.json({message: 'ok', token: token});
+  } else {
+    res.status(401).json({message:"passwords did not match"});
+  }
+});
+
+app.use('/api', passport.authenticate('jwt', { session: false }), api);
 app.use('*', indexRouter);
 
 // catch 404 and forward to error handler
