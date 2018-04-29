@@ -42,8 +42,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/login', async function(req, res) {
+  if (!req.body.data) {
+    return res.status(401).json({
+      message: 'No data found'
+    });
+  }
+
   const attributes = req.body.data.attributes;
-  if(attributes.email && attributes.password) {
+  if (attributes.email && attributes.password) {
     var email = attributes.email;
     var password = attributes.password;
   }
@@ -60,7 +66,7 @@ app.post('/login', async function(req, res) {
     var token = jwt.sign(payload, jwtOptions.secretOrKey, { expiresIn: '60m' });
     res.json({message: 'ok', token: token});
   } else {
-    res.status(401).json({message:"passwords did not match"});
+    res.status(401).json({message:'passwords did not match'});
   }
 });
 

@@ -15,7 +15,7 @@ function relationships(user) {
     user.roles.forEach(role => {
       data.push({
         id: role.id,
-        type: 'users'
+        type: 'roles'
       })
     });
     return {
