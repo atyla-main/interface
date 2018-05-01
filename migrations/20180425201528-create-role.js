@@ -20,7 +20,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      adminUserId: {
+      userId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         primaryKey: true
