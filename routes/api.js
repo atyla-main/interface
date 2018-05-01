@@ -18,7 +18,7 @@ router.get('/users/:userId', usersController.show);
 router.post('/users', usersController.create);
 router.put('/users/:userId', usersController.update);
 router.delete('/users/:userId', usersController.destroy);
-router.get('/roles', rolesController.list);
+router.get('/roles', rolesController.index);
 router.post('/roles', rolesController.create);
 router.put('/roles/:roleId', rolesController.update)
 

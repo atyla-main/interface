@@ -4,39 +4,46 @@ function attributes(role) {
   }
 }
 
-function relationships(role) {
+function relationships(users) {
+  var data = [];
+
+  users.forEach(user => {
+    data.push({
+      id: user.id,
+      type: 'users'
+    });
+  });
+
   return {
-    user: {
-      data: {
-        id: role.userId,
-        type: 'users'
-      }
+    users: {
+      data: data
     }
   }
 }
 
 module.exports = {
-  payload(role) {
+  async payload(role) {
     return {
       data: {
         id: role.id,
         type: 'roles',
         attributes: attributes(role),
-        relationships: relationships(role)
+        relationships: relationships(await role.getUsers())
       }
     }
   },
-  index_payload(roles) {
+
+  async index_payload(roles) {
     var data = [];
 
-    roles.forEach(role => {
+    for (var role of roles) {
       data.push({
-        id: role.id,
-        type: 'roles',
-        attributes: attributes(role),
-        relationships: relationships(role)
-      });
-    });
+          id: role.id,
+          type: 'roles',
+          attributes: attributes(role),
+          relationships: relationships(await role.getUsers())
+        });
+    }
 
     return {
       data: data

@@ -20,11 +20,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      userId: {
-        type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
-        primaryKey: true
-      },
     });
   },
   down: (queryInterface, Sequelize) => {

@@ -4,9 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     identifier: DataTypes.STRING
   }, {});
   Role.associate = function(models) {
-    Role.belongsTo(models.User, {
-      foreignKey: 'userId',
-      onDelete: 'CASCADE',
+    Role.belongsToMany(models.User, {
+      through: 'UserRoles',
     });
   };
   return Role;
