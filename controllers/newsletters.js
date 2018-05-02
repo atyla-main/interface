@@ -4,6 +4,7 @@ const view = require('../views').newsletters;
 module.exports = {
 	create(req, res) {
 		const data = req.body.data;
+
 		return Newsletter.create({
 			email: data.attributes.email
 		})
