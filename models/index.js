@@ -8,17 +8,7 @@ var db        = {};
 
 let sequelize;
 if (config.use_env_variable) {
-  var match = process.env[config.use_env_variable].match(/postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/)
-  sequelize = new Sequelize(match[5], match[1], match[2], {
-      dialect:  'postgres',
-      protocol: 'postgres',
-      port:     match[4],
-      host:     match[3],
-      logging: false,
-      dialectOptions: {
-          ssl: true
-      }
-  });
+  sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
   sequelize = new Sequelize(
     config.database, config.username, config.password, config
