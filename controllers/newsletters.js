@@ -8,7 +8,6 @@ module.exports = {
 			email: data.attributes.email
 		})
 			.then(newsletter => {
-				console.log(newsletter);
 				res.status(200).send(view.payload(newsletter));
 			})
 			.catch(error => res.status(400).send(error));

@@ -6,7 +6,6 @@ function attributes(newsletter) {
 
 module.exports = {
 	payload(newsletter) {
-		console.log(newsletter);
 		return {
 			data: {
 				id: newsletter.id,
