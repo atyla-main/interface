@@ -9,6 +9,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var api = require('./routes/api');
+const icosController = require('./controllers').icos;
 
 var indexRouter = require('./routes/index');
 
@@ -35,11 +36,26 @@ passport.use(strategy);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-app.use(function(req, res, next) {
- res.header("Access-Control-Allow-Origin", "*");
- res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
- next();
-});
+// app.use(function(req, res, next) {
+//  res.header("Access-Control-Allow-Origin", "*");
+//  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//  next();
+// });
+
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+    // intercept OPTIONS method
+    if ('OPTIONS' == req.method) {
+      res.send(200);
+    }
+    else {
+      next();
+    }
+};
+app.use(allowCrossDomain);
 
 app.use(passport.initialize());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -70,12 +86,14 @@ app.post('/login', async function(req, res) {
 	if (user.password == password) {
 		var payload = { id: user.id };
 		var token = jwt.sign(payload, jwtOptions.secretOrKey, { expiresIn: '60m' });
-		res.json({ message: 'ok', token: token });
+		res.json({ message: 'ok', id: user.id, token: token });
 	} else {
 		res.status(401).json({ message: 'passwords did not match' });
 	}
 });
 
+app.get('/icos/:icoId', icosController.show);
+app.get('/icos', icosController.index);
 app.use('/api', passport.authenticate('jwt', { session: false }), api);
 app.use('/', indexRouter);
 

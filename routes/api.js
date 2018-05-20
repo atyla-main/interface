@@ -30,8 +30,6 @@ router
 	.get('/newsletters/:newsletterId', newslettersController.show);
 //	.post('/newsletters', newslettersController.create);
 router
-	.get('/icos', icosController.index)
-	.get('/icos/:icoId', icosController.show)
 	.post('/icos', icosController.create)
 	.put('/icos/:icoId', icosController.update)
 	.delete('/icos/:icoId', icosController.destroy);
