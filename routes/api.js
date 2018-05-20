@@ -3,6 +3,7 @@ var router = express.Router();
 const usersController = require('../controllers').users;
 const rolesController = require('../controllers').roles;
 const newslettersController = require('../controllers').newsletters;
+const icosController = require('../controllers').icos;
 
 // middleware that is specific to this router
 router.use(function timeLog(req, res, next) {
@@ -28,4 +29,8 @@ router
 	.get('/newsletters', newslettersController.index)
 	.get('/newsletters/:newsletterId', newslettersController.show);
 //	.post('/newsletters', newslettersController.create);
+router
+	.post('/icos', icosController.create)
+	.put('/icos/:icoId', icosController.update)
+	.delete('/icos/:icoId', icosController.destroy);
 module.exports = router;
