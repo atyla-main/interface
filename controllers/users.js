@@ -18,12 +18,25 @@ module.exports = {
 		}
 
 		return User.create({
-			email: data.attributes.email,
-			firstName: data.attributes.firstName,
-			lastName: data.attributes.lastName,
-			password: data.attributes.password,
-			token: data.attributes.token
-		})
+        email: data.attributes.email,
+        firstName: data.attributes.firstName,
+        lastName: data.attributes.lastName,
+        password: data.attributes.password,
+        token: data.attributes.token,
+        source: data.attributes.source,
+        stage: data.attributes.stage,
+        gender: data.attributes.gender,
+        birthDate: data.attributes.birthDate,
+        birthCity: data.attributes.birthCity,
+        phone: data.attributes.phone,
+        citizenship: data.attributes.citizenship,
+        country: data.attributes.country,
+        address: data.attributes.address,
+        zipCode: data.attributes.zipCode,
+        city: data.attributes.city,
+        state: data.attributes.state,
+        optIn: data.attributes.optIn
+      })
 			.then(async user => {
 				var roles = await Role.findAll({ where: { id: rolesRelation } });
 				await user.setRoles(roles);
