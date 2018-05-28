@@ -19,7 +19,6 @@ router.get('/', function(req, res) {
 router
 	.get('/users', usersController.index)
 	.get('/users/:userId', usersController.show)
-	.post('/users', usersController.create)
 	.put('/users/:userId', usersController.update)
 	.delete('/users/:userId', usersController.destroy);
 router

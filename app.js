@@ -10,7 +10,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var api = require('./routes/api');
 const icosController = require('./controllers').icos;
-
+const usersController = require('./controllers').users;
+const bcrypt = require('bcrypt');
 var indexRouter = require('./routes/index');
 
 var ExtractJwt = passportJWT.ExtractJwt;
@@ -83,7 +84,7 @@ app.post('/login', async function(req, res) {
 		});
 	}
 
-	if (user.password == password) {
+	if (bcrypt.compareSync(password, user.password)) {
 		var payload = { id: user.id };
 		var token = jwt.sign(payload, jwtOptions.secretOrKey, { expiresIn: '60m' });
 		res.json({ message: 'ok', id: user.id, token: token });
@@ -92,6 +93,7 @@ app.post('/login', async function(req, res) {
 	}
 });
 
+app.post('/users', usersController.create)
 app.get('/icos/:icoId', icosController.show);
 app.get('/icos', icosController.index);
 app.use('/api', passport.authenticate('jwt', { session: false }), api);
