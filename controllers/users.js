@@ -1,6 +1,7 @@
 const User = require('../models').User;
 const Role = require('../models').Role;
 const view = require('../views').users;
+const bcrypt = require('bcrypt');
 
 module.exports = {
 	create(req, res) {
@@ -21,7 +22,7 @@ module.exports = {
         email: data.attributes.email,
         firstName: data.attributes.firstName,
         lastName: data.attributes.lastName,
-        password: data.attributes.password,
+        password: bcrypt.hashSync(data.attributes.password, 10),
         token: data.attributes.token,
         source: data.attributes.source,
         stage: data.attributes.stage,
