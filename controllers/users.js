@@ -115,5 +115,23 @@ module.exports = {
 					.catch(error => res.status(400).send(error));
 			})
 			.catch(error => res.status(400).send(error));
-	}
+	},
+
+  emailConfirmation(req, res) {
+	return User.findById(req.params.userId)
+		.then(async User => {
+			if (!User || User.stage != 'confirmation_send') {
+				return res.status(400).send({
+					message: 'User Not Found'
+				});
+			}
+			return res.status(200).send({
+        data: {
+          id: User.id,
+          type: 'users'
+        }
+      });
+		})
+		.catch(error => res.status(400).send(error));
+  }
 };
