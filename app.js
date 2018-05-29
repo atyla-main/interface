@@ -94,7 +94,8 @@ app.post('/login', async function(req, res) {
 	}
 });
 
-app.post('/users', usersController.create)
+app.get('/users/:userId', usersController.emailConfirmation);
+app.post('/users', usersController.create);
 app.get('/icos/:icoId', icosController.show);
 app.get('/icos', icosController.index);
 app.use('/api', passport.authenticate('jwt', { session: false }), api);
