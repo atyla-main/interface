@@ -78,8 +78,9 @@ app.post('/login', async function(req, res) {
 		var password = attributes.password;
 	}
 
+  let blockedStages = ['inscription', 'confirmation_send', 'denied', 'unsubscribed'];
 	var user = await User.findOne({ where: { email: email } });
-	if (!user) {
+	if (!user || blockedStages.includes(user.stage)) {
 		res.status(401).json({
 			message: 'No such user found'
 		});
