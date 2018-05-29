@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
 				type: DataTypes.STRING,
 				allowNull: true,
         validate: {
-          isIn: [['inscription', 'confirmation_send', 'confirmation', 'kyc_send', 'validated', 'denied', 'unsubscribed']]
+          isIn: [['inscription', 'confirmation_send', 'confirmed', 'kyc_send', 'validated', 'denied', 'unsubscribed']]
         }
       },
       gender: {

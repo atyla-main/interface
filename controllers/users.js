@@ -125,6 +125,7 @@ module.exports = {
 					message: 'User Not Found'
 				});
 			}
+      User.update({ stage: 'confirmed' });
 			return res.status(200).send({
         data: {
           id: User.id,
