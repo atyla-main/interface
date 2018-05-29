@@ -2,6 +2,7 @@ const User = require('../models').User;
 const Role = require('../models').Role;
 const view = require('../views').users;
 const bcrypt = require('bcrypt');
+const AtylaEmail = require('../services/email-management');
 
 module.exports = {
 	create(req, res) {
@@ -42,6 +43,7 @@ module.exports = {
 				var roles = await Role.findAll({ where: { id: rolesRelation } });
 				await user.setRoles(roles);
 				res.status(200).send(await view.payload(user));
+        AtylaEmail.sendConfirmationEmail(user);
 			})
 			.catch(error => res.status(400).send(error));
 	},

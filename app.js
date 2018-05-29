@@ -13,6 +13,7 @@ const icosController = require('./controllers').icos;
 const usersController = require('./controllers').users;
 const bcrypt = require('bcrypt');
 var indexRouter = require('./routes/index');
+require('dotenv').config();
 
 var ExtractJwt = passportJWT.ExtractJwt;
 var JwtStrategy = passportJWT.Strategy;
