@@ -13,6 +13,7 @@ const icosController = require('./controllers').icos;
 const usersController = require('./controllers').users;
 const bcrypt = require('bcrypt');
 var indexRouter = require('./routes/index');
+require('dotenv').config();
 
 var ExtractJwt = passportJWT.ExtractJwt;
 var JwtStrategy = passportJWT.Strategy;
@@ -77,8 +78,9 @@ app.post('/login', async function(req, res) {
 		var password = attributes.password;
 	}
 
+  let blockedStages = ['inscription', 'confirmation_send', 'denied', 'unsubscribed'];
 	var user = await User.findOne({ where: { email: email } });
-	if (!user) {
+	if (!user || blockedStages.includes(user.stage)) {
 		res.status(401).json({
 			message: 'No such user found'
 		});
@@ -93,7 +95,8 @@ app.post('/login', async function(req, res) {
 	}
 });
 
-app.post('/users', usersController.create)
+app.get('/users/:userId', usersController.emailConfirmation);
+app.post('/users', usersController.create);
 app.get('/icos/:icoId', icosController.show);
 app.get('/icos', icosController.index);
 app.use('/api', passport.authenticate('jwt', { session: false }), api);
