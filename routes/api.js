@@ -5,6 +5,7 @@ const rolesController = require('../controllers').roles;
 const newslettersController = require('../controllers').newsletters;
 const icosController = require('../controllers').icos;
 const ordersController = require('../controllers').orders;
+const prospectsController = require('../controllers').prospects;
 
 // middleware that is specific to this router
 router.use(function timeLog(req, res, next) {
@@ -27,8 +28,12 @@ router
 	.put('/roles/:roleId', rolesController.update);
 router
 	.get('/newsletters', newslettersController.index)
-	.get('/newsletters/:newsletterId', newslettersController.show);
-//	.post('/newsletters', newslettersController.create);
+	.get('/newsletters/:newsletterId', newslettersController.show)
+  .post('/newsletters', newslettersController.create);
+router
+	.get('/prospects', prospectsController.index)
+	.get('/prospects/:prospectId', prospectsController.show)
+  .post('/prospects', prospectsController.create);
 router
 	.post('/icos', icosController.create)
 	.put('/icos/:icoId', icosController.update)
