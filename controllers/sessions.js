@@ -4,11 +4,23 @@ const bcrypt = require('bcrypt');
 const moment = require('moment');
 
 module.exports = {
+  canResetPassword(req, res) {
+    return User.findById(req.params.userId)
+      .then(User => {
+        if (!User || (User && User.passwordForgotten == false)) {
+          return res.status(400).send({
+            message: 'User Not Found'
+          });
+        }
+        return res.status(200).send({ message: 'ok' });
+      })
+      .catch(error => res.status(400).send(error));
+  },
+
   async passwordForgotten(req, res) {
     let data = req.body.data;
     var user = await User.findOne({ where: { email: data.attributes.email } });
     if (user) {
-      console.log("USER EXIST");
       user.passwordForgotten = true;
       user.passwordForgottenDate = Date.now();
       await user.save({fields: ['passwordForgotten', 'passwordForgottenDate']});
