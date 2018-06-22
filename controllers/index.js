@@ -4,6 +4,7 @@ const newsletters = require('./newsletters');
 const icos = require('./icos');
 const orders = require('./orders');
 const prospects = require('./prospects');
+const sessions = require('./sessions');
 
 module.exports = {
 	roles,
@@ -11,5 +12,6 @@ module.exports = {
 	newsletters,
 	icos,
   orders,
-  prospects
+  prospects,
+  sessions
 };

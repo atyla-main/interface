@@ -98,6 +98,17 @@ module.exports = (sequelize, DataTypes) => {
 				type: DataTypes.BOOLEAN,
 				defaultValue: false
       },
+      passwordForgotten: {
+				type: DataTypes.BOOLEAN,
+				defaultValue: false
+      },
+      passwordForgottenDate: {
+				type: DataTypes.DATE,
+				allowNull: true,
+        validate: {
+          isDate: true
+        }
+      },
 		},
 		{}
 	);
