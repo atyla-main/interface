@@ -11,6 +11,7 @@ var logger = require('morgan');
 var api = require('./routes/api');
 const icosController = require('./controllers').icos;
 const usersController = require('./controllers').users;
+const sessionsController = require('./controllers').sessions;
 const bcrypt = require('bcrypt');
 var indexRouter = require('./routes/index');
 require('dotenv').config();
@@ -97,6 +98,8 @@ app.post('/login', async function(req, res) {
 
 app.get('/users/:userId', usersController.emailConfirmation);
 app.post('/users', usersController.create);
+app.post('/password_forgotten', sessionsController.passwordForgotten);
+app.post('/reset_password', sessionsController.resetPassword);
 app.get('/icos/:icoId', icosController.show);
 app.get('/icos', icosController.index);
 app.use('/api', passport.authenticate('jwt', { session: false }), api);
