@@ -100,6 +100,7 @@ app.get('/users/:userId', usersController.emailConfirmation);
 app.post('/users', usersController.create);
 app.post('/password_forgotten', sessionsController.passwordForgotten);
 app.post('/reset_password', sessionsController.resetPassword);
+app.get('/can_reset_password/:userId', sessionsController.canResetPassword);
 app.get('/icos/:icoId', icosController.show);
 app.get('/icos', icosController.index);
 app.use('/api', passport.authenticate('jwt', { session: false }), api);
