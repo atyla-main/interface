@@ -13,6 +13,7 @@ const icosController = require('./controllers').icos;
 const usersController = require('./controllers').users;
 const sessionsController = require('./controllers').sessions;
 const bcrypt = require('bcrypt');
+const prospectsController = require('./controllers').prospects;
 var indexRouter = require('./routes/index');
 require('dotenv').config();
 
@@ -96,6 +97,7 @@ app.post('/login', async function(req, res) {
 	}
 });
 
+app.post('/prospects', prospectsController.create);
 app.get('/users/:userId', usersController.emailConfirmation);
 app.post('/users', usersController.create);
 app.post('/password_forgotten', sessionsController.passwordForgotten);
