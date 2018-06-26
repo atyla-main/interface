@@ -32,8 +32,7 @@ router
   .post('/newsletters', newslettersController.create);
 router
 	.get('/prospects', prospectsController.index)
-	.get('/prospects/:prospectId', prospectsController.show)
-  .post('/prospects', prospectsController.create);
+	.get('/prospects/:prospectId', prospectsController.show);
 router
 	.post('/icos', icosController.create)
 	.put('/icos/:icoId', icosController.update)
