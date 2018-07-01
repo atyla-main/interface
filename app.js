@@ -4,6 +4,8 @@ var jwt = require('jsonwebtoken');
 var passport = require('passport');
 var passportJWT = require('passport-jwt');
 var createError = require('http-errors');
+var http = require('http');
+var enforce = require('express-sslify');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -26,6 +28,14 @@ const User = require('./models').User;
 
 var app = express();
 app.use(logger('dev'));
+
+if ('production' === app.get('env')) {
+  app.use(enforce.HTTPS({ trustProtoHeader: true }));
+
+  http.createServer(app).listen(app.get('port'), function() {
+    console.log('Express server listening on port ' + app.get('port'));
+  });
+}
 
 var jwtOptions = {};
 
@@ -59,6 +69,7 @@ var allowCrossDomain = function(req, res, next) {
       next();
     }
 };
+
 app.use(allowCrossDomain);
 
 app.use(passport.initialize());
