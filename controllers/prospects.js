@@ -1,11 +1,13 @@
 const Prospect = require('../models').Prospect;
 const view = require('../views').prospects;
+const uuidv4 = require('uuid/v4');
 
 module.exports = {
 	create(req, res) {
 		const data = req.body.data;
 
 		return Prospect.create({
+      uuid: uuidv4(),
 			email: data.attributes.email
 		})
 			.then(prospect => {

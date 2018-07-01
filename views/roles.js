@@ -9,7 +9,7 @@ function relationships(users) {
 
   users.forEach(user => {
     data.push({
-      id: user.id,
+      id: user.uuid,
       type: 'users'
     });
   });

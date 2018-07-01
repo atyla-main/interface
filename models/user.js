@@ -3,6 +3,11 @@ module.exports = (sequelize, DataTypes) => {
 	var User = sequelize.define(
 		'User',
 		{
+      uuid: {
+        type: DataTypes.UUID,
+        primaryKey: true,
+        defaultValue: DataTypes.UUIDV4
+      },
 			firstName: {
 				type: DataTypes.STRING,
 				allowNull: false
@@ -19,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
           isUnique(value, next) {
             User.find({
               where: { email: value },
-              attributes: ['id']
+              attributes: ['uuid']
             }).done((user) => {
               if (user) {
                 return next('email must be unique');

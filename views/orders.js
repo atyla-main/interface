@@ -10,7 +10,7 @@ function relationshipUser(user) {
   if (user) {
     return {
       data: {
-        id: user.id,
+        id: user.uuid,
         type: 'users'
       }
     };

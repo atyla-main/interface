@@ -13,8 +13,8 @@ module.exports = {
           allowNull: false,
           type: Sequelize.DATE,
         },
-        UserId: {
-          type: Sequelize.INTEGER,
+        UserUuid: {
+          type: Sequelize.UUID,
           primaryKey: true,
         },
         RoleId: {

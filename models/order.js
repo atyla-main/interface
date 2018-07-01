@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   Order.associate = function(models) {
     Order.belongsTo(models.User, {
-      foreignKey: 'userId'
+      foreignKey: 'userUuid'
     });
     Order.belongsTo(models.Ico, {
       foreignKey: 'icoId'

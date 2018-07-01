@@ -42,7 +42,7 @@ module.exports = {
   async payload(user) {
     return {
       data: {
-        id: user.id,
+        id: user.uuid,
         type: 'users',
         attributes: attributes(user),
         relationships: relationships(await user.getRoles())
@@ -55,7 +55,7 @@ module.exports = {
 
     for (var user of users) {
       data.push({
-        id: user.id,
+        id: user.uuid,
         type: 'users',
         attributes: attributes(user),
         relationships: relationships(await user.getRoles())
