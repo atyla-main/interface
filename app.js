@@ -100,9 +100,9 @@ app.post('/login', async function(req, res) {
 	}
 
 	if (bcrypt.compareSync(password, user.password)) {
-		var payload = { id: user.id };
+		var payload = { id: user.uuid };
 		var token = jwt.sign(payload, jwtOptions.secretOrKey, { expiresIn: '60m' });
-		res.json({ message: 'ok', id: user.id, token: token });
+		res.json({ message: 'ok', id: user.uuid, token: token });
 	} else {
 		res.status(401).json({ message: 'passwords did not match' });
 	}

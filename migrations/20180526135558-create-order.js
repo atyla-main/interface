@@ -17,11 +17,11 @@ module.exports = {
       motif: {
         type: Sequelize.STRING
       },
-      userId: {
-        type: Sequelize.INTEGER,
+      userUuid: {
+        type: Sequelize.UUID,
         reference: {
           model: 'Users',
-          key: 'id'
+          key: 'uuid'
         },
         onUpdate: 'cascade',
         onDelete: 'cascade'

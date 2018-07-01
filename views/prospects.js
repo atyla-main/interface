@@ -8,7 +8,7 @@ module.exports = {
 	payload(prospect) {
 		return {
 			data: {
-				id: prospect.id,
+				id: prospect.uuid,
 				type: 'prospects',
 				attributes: attributes(prospect)
 			}
@@ -20,7 +20,7 @@ module.exports = {
 
 		for (var prospect of prospects) {
 			data.push({
-				id: prospect.id,
+				id: prospect.uuid,
 				type: 'prospects',
 				attributes: attributes(prospect)
 			});

@@ -10,7 +10,7 @@ module.exports = {
       subject: 'You can now confirm your email',
       html: `<p><strong>Welcome to Atyla !</strong></p> \
         <p>Please click on the link bellow</p> \
-        <p><a href="${url}sign-up/confirmation/${user.id}">Confirm your email</a></p>`,
+        <p><a href="${url}sign-up/confirmation/${user.uuid}">Confirm your email</a></p>`,
     });
     user.update({ stage: 'confirmation_send' });
   },
@@ -24,7 +24,7 @@ module.exports = {
       subject: 'You can now change your password',
       html: `<p><strong>You can now update your password</strong></p> \
         <p>Please click on the link bellow</p> \
-        <p><a href="${url}reset-password/${user.id}">Change your password !</a></p>`,
+        <p><a href="${url}reset-password/${user.uuid}">Change your password !</a></p>`,
     });
   },
 

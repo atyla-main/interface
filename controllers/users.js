@@ -3,6 +3,7 @@ const Role = require('../models').Role;
 const view = require('../views').users;
 const bcrypt = require('bcrypt');
 const AtylaEmail = require('../services/email-management');
+const uuidv4 = require('uuid/v4');
 
 module.exports = {
 	create(req, res) {
@@ -20,6 +21,7 @@ module.exports = {
 		}
 
 		return User.create({
+        uuid: uuidv4(),
         email: data.attributes.email,
         firstName: data.attributes.firstName,
         lastName: data.attributes.lastName,
@@ -128,7 +130,7 @@ module.exports = {
         User.update({ stage: 'confirmed' });
   			return res.status(200).send({
           data: {
-            id: User.id,
+            id: User.uuid,
             type: 'users'
           }
         });

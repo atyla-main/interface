@@ -21,7 +21,7 @@ module.exports = {
 			identifier: data.attributes.identifier
 		})
 			.then(async role => {
-				var users = await User.findAll({ where: { id: usersRelation } });
+				var users = await User.findAll({ where: { uuid: usersRelation } });
 				await role.setUsers(users);
 				res.status(200).send(await view.payload(role));
 			})
@@ -60,7 +60,7 @@ module.exports = {
 				}
 				return Role.update(attributes, { fields: Object.keys(attributes) })
 					.then(async role => {
-						var users = await User.findAll({ where: { id: usersRelation } });
+						var users = await User.findAll({ where: { uuid: usersRelation } });
 						await role.setUsers(users);
 						res.status(200).send(await view.payload(role));
 					})
