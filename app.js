@@ -95,7 +95,7 @@ app.post('/login', async function(req, res) {
 	var user = await User.findOne({ where: { email: email } });
 	if (!user || blockedStages.includes(user.stage)) {
 		res.status(401).json({
-			message: 'No such user found'
+			message: 'Aucun utilisateur trouvé.'
 		});
 	}
 
@@ -104,7 +104,7 @@ app.post('/login', async function(req, res) {
 		var token = jwt.sign(payload, jwtOptions.secretOrKey, { expiresIn: '60m' });
 		res.json({ message: 'ok', id: user.uuid, token: token });
 	} else {
-		res.status(401).json({ message: 'passwords did not match' });
+		res.status(401).json({ message: 'Le mot de passe de correspond pas.' });
 	}
 });
 
