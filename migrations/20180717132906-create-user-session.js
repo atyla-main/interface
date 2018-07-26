@@ -1,11 +1,14 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Orders', {
+    return queryInterface.createTable('UserSessions', {
       uuid: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID
+      },
+      ipAddress: {
+        type: Sequelize.STRING
       },
       userUuid: {
         type: Sequelize.UUID,
@@ -16,29 +19,21 @@ module.exports = {
         onUpdate: 'cascade',
         onDelete: 'cascade'
       },
-      status: {
-        allowNull: false,
-        type: Sequelize.STRING
+      orderUuid: {
+        type: Sequelize.UUID,
+        reference: {
+          model: 'Orders',
+          key: 'uuid'
+        },
+        onUpdate: 'cascade',
+        onDelete: 'cascade'
       },
-      statusHistory: {
-        allowNull: false,
-        type: Sequelize.ARRAY(Sequelize.JSONB)
-      },
-      amount: {
-        allowNull: false,
+      userAgent: {
         type: Sequelize.JSONB
-      },
-      fees: {
-        allowNull: false,
-        type: Sequelize.DECIMAL(5, 4)
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-      source: {
-        allowNull: false,
-        type: Sequelize.STRING
       },
       updatedAt: {
         allowNull: false,
@@ -47,6 +42,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Orders');
+    return queryInterface.dropTable('UserSessions');
   }
 };

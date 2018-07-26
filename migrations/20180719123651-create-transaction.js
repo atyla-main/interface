@@ -1,44 +1,32 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Orders', {
+    return queryInterface.createTable('Transactions', {
       uuid: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID
       },
-      userUuid: {
+      paymentUuid: {
         type: Sequelize.UUID,
         reference: {
-          model: 'Users',
+          model: 'Payments',
           key: 'uuid'
         },
         onUpdate: 'cascade',
         onDelete: 'cascade'
       },
-      status: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      statusHistory: {
-        allowNull: false,
-        type: Sequelize.ARRAY(Sequelize.JSONB)
-      },
       amount: {
         allowNull: false,
         type: Sequelize.JSONB
       },
-      fees: {
+      status: {
         allowNull: false,
-        type: Sequelize.DECIMAL(5, 4)
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-      source: {
-        allowNull: false,
-        type: Sequelize.STRING
       },
       updatedAt: {
         allowNull: false,
@@ -47,6 +35,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Orders');
+    return queryInterface.dropTable('Transactions');
   }
 };

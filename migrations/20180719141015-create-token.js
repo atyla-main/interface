@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Orders', {
+    return queryInterface.createTable('Tokens', {
       uuid: {
         allowNull: false,
         primaryKey: true,
@@ -16,29 +16,17 @@ module.exports = {
         onUpdate: 'cascade',
         onDelete: 'cascade'
       },
-      status: {
+      name: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      statusHistory: {
-        allowNull: false,
-        type: Sequelize.ARRAY(Sequelize.JSONB)
-      },
       amount: {
         allowNull: false,
-        type: Sequelize.JSONB
-      },
-      fees: {
-        allowNull: false,
-        type: Sequelize.DECIMAL(5, 4)
+        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-      source: {
-        allowNull: false,
-        type: Sequelize.STRING
       },
       updatedAt: {
         allowNull: false,
@@ -47,6 +35,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Orders');
+    return queryInterface.dropTable('Tokens');
   }
 };

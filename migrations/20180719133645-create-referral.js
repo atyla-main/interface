@@ -1,44 +1,43 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Orders', {
+    return queryInterface.createTable('Referrals', {
       uuid: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID
       },
-      userUuid: {
+      icoUuid: {
         type: Sequelize.UUID,
         reference: {
-          model: 'Users',
+          model: 'Icos',
           key: 'uuid'
         },
         onUpdate: 'cascade',
         onDelete: 'cascade'
       },
-      status: {
+      label: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      statusHistory: {
-        allowNull: false,
-        type: Sequelize.ARRAY(Sequelize.JSONB)
+      metric: {
+        type: Sequelize.INTEGER
       },
-      amount: {
+      suffix: {
         allowNull: false,
-        type: Sequelize.JSONB
+        type: Sequelize.STRING
       },
-      fees: {
+      link: {
         allowNull: false,
-        type: Sequelize.DECIMAL(5, 4)
+        type: Sequelize.STRING
+      },
+      picto: {
+        allowNull: true,
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-      source: {
-        allowNull: false,
-        type: Sequelize.STRING
       },
       updatedAt: {
         allowNull: false,
@@ -47,6 +46,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Orders');
+    return queryInterface.dropTable('Referrals');
   }
 };
