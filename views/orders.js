@@ -1,8 +1,10 @@
 function attributes(order) {
 	return {
-    orderMean: order.orderMean,
-    currentStage: order.currentStage,
-    motif: order.motif,
+    status: order.status,
+    statusHistory: order.statusHistory,
+    amount: order.amount,
+    fees: order.fees,
+    source: order.source
 	};
 }
 
@@ -41,7 +43,7 @@ module.exports = {
 	async payload(order) {
 		return {
 			data: {
-				id: order.id,
+				id: order.uuid,
 				type: 'orders',
 				attributes: attributes(order),
         relationships: await relationships(await order.getIco(), await order.getUser())
@@ -56,7 +58,7 @@ module.exports = {
       let user = await order.getUser();
 
       data.push({
-        id: order.id,
+        id: order.uuid,
         type: 'orders',
         attributes: attributes(order),
         relationships: relationships(ico, user)
