@@ -1,43 +1,29 @@
 var express = require('express');
 var router = express.Router();
-const usersController = require('../controllers').users;
-const rolesController = require('../controllers').roles;
-const newslettersController = require('../controllers').newsletters;
-const icosController = require('../controllers').icos;
-const ordersController = require('../controllers').orders;
-const prospectsController = require('../controllers').prospects;
 
-// middleware that is specific to this router
+const ProcessCreate = require('../app/business/processes/create');
+const ProcessShow = require('../app/business/processes/show');
+const ProcessIndex = require('../app/business/processes/index');
+const ProcessUpdate = require('../app/business/processes/update');
+const ProcessDestroy = require('../app/business/processes/destroy');
+const CollectionsValidation = require('../app/middleware/collections-validation');
+const IdValidation = require('../app/middleware/id-validation');
+
 router.use(function timeLog(req, res, next) {
 	console.log('Time: ', Date.now());
 	next();
 });
-// define the home page route
+
 router.get('/', function(req, res) {
 	res.send('Welcome to the api');
 });
-// define the about route
-router
-	.get('/users', usersController.index)
-	.get('/users/:userId', usersController.show)
-	.put('/users/:userId', usersController.update)
-	.delete('/users/:userId', usersController.destroy);
-router
-	.get('/roles', rolesController.index)
-	.post('/roles', rolesController.create)
-	.put('/roles/:roleId', rolesController.update);
-router
-	.get('/newsletters', newslettersController.index)
-	.get('/newsletters/:newsletterId', newslettersController.show)
-  .post('/newsletters', newslettersController.create);
-router
-	.get('/prospects', prospectsController.index)
-	.get('/prospects/:prospectId', prospectsController.show);
-router
-	.post('/icos', icosController.create)
-	.put('/icos/:icoId', icosController.update)
-	.delete('/icos/:icoId', icosController.destroy);
-router
-  .get('/orders', ordersController.index)
-	.post('/orders', ordersController.create)
+
+
+router.post('/:collection', CollectionsValidation.validate, ProcessCreate.create)
+      .get('/:collection/:id', CollectionsValidation.validate, IdValidation.validate,  ProcessShow.show)
+      .get('/:collection', CollectionsValidation.validate, ProcessIndex.index)
+      .put('/:collection/:id', CollectionsValidation.validate, IdValidation.validate, ProcessUpdate.update)
+      .delete('/:collection/:id', CollectionsValidation.validate, IdValidation.validate, ProcessDestroy.destroy);
+
+
 module.exports = router;

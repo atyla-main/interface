@@ -59,6 +59,7 @@ module.exports = (sequelize, DataTypes) => {
       stage: {
         type: DataTypes.STRING,
         allowNull: true,
+        defaultValue: 'inscription',
         validate: {
           isIn: [['inscription', 'confirmation_send', 'confirmed', 'kyc_send', 'validated', 'denied', 'unsubscribed']]
         }

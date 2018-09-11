@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
-const usersController = require('../controllers').users;
 const newslettersController = require('../controllers').newsletters;
+const ProcessCreate = require('../app/business/processes/create');
+const CollectionsValidation = require('../app/middleware/collections-validation');
+
 var bodyParser = require('body-parser');
 
 /* GET home page. */
@@ -13,6 +15,6 @@ router.get('/', function(req, res, next) {
 	res.render('index', { title: 'Express' });
 });
 
-router.post('/newsletters', newslettersController.create);
+router.post('/newsletters', CollectionsValidation.validate, ProcessCreate.create);
 
 module.exports = router;

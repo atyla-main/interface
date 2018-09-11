@@ -1,0 +1,83 @@
+2018-04-22 18:37:09.955 CEST [97118] LOG:  listening on IPv6 address "::1", port 5432
+2018-04-22 18:37:09.955 CEST [97118] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2018-04-22 18:37:09.956 CEST [97118] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2018-04-22 18:37:09.967 CEST [97119] LOG:  database system was shut down at 2018-04-22 18:36:59 CEST
+2018-04-22 18:37:09.970 CEST [97118] LOG:  database system is ready to accept connections
+2018-04-22 18:37:22.146 CEST [97158] FATAL:  database "trasto" does not exist
+2018-04-22 18:41:41.596 CEST [97439] FATAL:  database "trasto" does not exist
+2018-04-22 18:41:46.797 CEST [97453] FATAL:  database "trasto" does not exist
+2018-04-22 18:46:10.112 CEST [97118] LOG:  received fast shutdown request
+2018-04-22 18:46:10.113 CEST [97118] LOG:  aborting any active transactions
+2018-04-22 18:46:10.114 CEST [97118] LOG:  worker process: logical replication launcher (PID 97125) exited with exit code 1
+2018-04-22 18:46:10.114 CEST [97120] LOG:  shutting down
+2018-04-22 18:46:10.118 CEST [97118] LOG:  database system is shut down
+2018-04-22 18:50:30.955 CEST [98166] LOG:  listening on IPv6 address "::1", port 5432
+2018-04-22 18:50:30.955 CEST [98166] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2018-04-22 18:50:30.956 CEST [98166] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2018-04-22 18:50:30.968 CEST [98167] LOG:  database system was shut down at 2018-04-22 18:50:18 CEST
+2018-04-22 18:50:30.971 CEST [98166] LOG:  database system is ready to accept connections
+2018-04-22 18:52:14.151 CEST [98318] FATAL:  role "trasto" does not exist
+2018-04-22 18:52:37.896 CEST [98357] FATAL:  role "technicql" does not exist
+2018-04-22 18:52:41.132 CEST [98371] FATAL:  database "dbpg" does not exist
+2018-04-22 18:52:51.816 CEST [98389] FATAL:  database "pgdb" does not exist
+2018-04-22 18:52:57.193 CEST [98403] FATAL:  role "trasto" does not exist
+2018-04-22 18:53:05.208 CEST [98421] FATAL:  role "trasto" does not exist
+2018-04-22 18:54:07.772 CEST [98481] FATAL:  role "trasto" does not exist
+2018-04-22 18:54:13.032 CEST [98495] FATAL:  role "trasto" does not exist
+2018-04-22 18:54:16.732 CEST [98509] FATAL:  database "local socket" does not exist
+2018-04-22 18:58:23.142 CEST [98728] FATAL:  role "trasto" does not exist
+2018-04-22 18:58:28.467 CEST [98742] FATAL:  role "trasto" does not exist
+2018-04-22 19:00:16.222 CEST [98865] FATAL:  role "trasto" does not exist
+2018-04-22 19:02:01.068 CEST [98166] LOG:  received fast shutdown request
+2018-04-22 19:02:01.069 CEST [98166] LOG:  aborting any active transactions
+2018-04-22 19:02:01.070 CEST [98166] LOG:  worker process: logical replication launcher (PID 98173) exited with exit code 1
+2018-04-22 19:02:01.070 CEST [98168] LOG:  shutting down
+2018-04-22 19:02:01.075 CEST [98166] LOG:  database system is shut down
+2018-04-22 19:05:31.689 CEST [99207] LOG:  listening on IPv6 address "::1", port 5432
+2018-04-22 19:05:31.689 CEST [99207] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2018-04-22 19:05:31.690 CEST [99207] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2018-04-22 19:05:31.702 CEST [99208] LOG:  database system was shut down at 2018-04-22 19:05:10 CEST
+2018-04-22 19:05:31.704 CEST [99207] LOG:  database system is ready to accept connections
+2018-04-22 19:05:57.110 CEST [99247] FATAL:  database "trasto" does not exist
+2018-04-22 19:06:09.190 CEST [99266] FATAL:  role "postgres" does not exist
+2018-04-22 19:08:49.184 CEST [99461] FATAL:  database "trasto" does not exist
+2018-04-22 19:09:17.046 CEST [99505] FATAL:  database "vendor/postgresql" does not exist
+2018-04-22 19:09:37.285 CEST [99531] FATAL:  database "postgresql" does not exist
+2018-04-22 19:09:39.718 CEST [99541] FATAL:  database "trasto" does not exist
+2018-04-22 19:09:56.106 CEST [99569] FATAL:  lock file "postmaster.pid" already exists
+2018-04-22 19:09:56.106 CEST [99569] HINT:  Is another postmaster (PID 99207) running in data directory "/Users/trasto/AtylaProject/atyla-apiv1/vendor/postgresql"?
+2018-04-22 19:10:07.074 CEST [99588] FATAL:  lock file "postmaster.pid" already exists
+2018-04-22 19:10:07.074 CEST [99588] HINT:  Is another postmaster (PID 99207) running in data directory "/Users/trasto/AtylaProject/atyla-apiv1/vendor/postgresql"?
+2018-04-22 19:10:18.894 CEST [99642] LOG:  listening on IPv6 address "::1", port 5432
+2018-04-22 19:10:18.894 CEST [99642] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2018-04-22 19:10:18.896 CEST [99642] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2018-04-22 19:10:18.911 CEST [99643] LOG:  database system was interrupted; last known up at 2018-04-22 19:05:31 CEST
+2018-04-22 19:10:18.984 CEST [99643] LOG:  database system was not properly shut down; automatic recovery in progress
+2018-04-22 19:10:18.987 CEST [99643] LOG:  redo starts at 0/15DF1E0
+2018-04-22 19:10:18.987 CEST [99643] LOG:  invalid record length at 0/15DF218: wanted 24, got 0
+2018-04-22 19:10:18.987 CEST [99643] LOG:  redo done at 0/15DF1E0
+2018-04-22 19:10:18.994 CEST [99642] LOG:  database system is ready to accept connections
+2018-04-22 19:10:29.805 CEST [99692] FATAL:  database "trasto" does not exist
+2018-04-22 19:10:36.525 CEST [99710] FATAL:  database "postgresql" does not exist
+2018-04-22 19:11:47.574 CEST [99779] FATAL:  database "trasto" does not exist
+2018-04-22 19:21:08.885 CEST [212] ERROR:  syntax error at or near "exit" at character 1
+2018-04-22 19:21:08.885 CEST [212] STATEMENT:  exit
+	QUIT;
+2018-04-22 19:21:11.531 CEST [212] ERROR:  syntax error at or near "QUIT" at character 1
+2018-04-22 19:21:11.531 CEST [212] STATEMENT:  QUIT;
+2018-04-22 19:21:16.713 CEST [212] ERROR:  syntax error at or near "QUIT" at character 1
+2018-04-22 19:21:16.713 CEST [212] STATEMENT:  QUIT
+	;
+2018-04-22 19:45:07.252 CEST [1970] ERROR:  syntax error at or near "DESCRIBE" at character 1
+2018-04-22 19:45:07.252 CEST [1970] STATEMENT:  DESCRIBE TABLE AdminUsers
+	;
+2018-04-22 19:45:18.903 CEST [1970] ERROR:  syntax error at or near "DESCRIBE" at character 1
+2018-04-22 19:45:18.903 CEST [1970] STATEMENT:  DESCRIBE TABLE AdminUsers;
+2018-04-22 19:48:19.382 CEST [1970] ERROR:  relation "adminusers" does not exist at character 7
+2018-04-22 19:48:19.382 CEST [1970] STATEMENT:  TABLE AdminUsers;
+2018-04-22 19:48:24.536 CEST [1970] ERROR:  relation "adminuser" does not exist at character 7
+2018-04-22 19:48:24.536 CEST [1970] STATEMENT:  TABLE AdminUser;
+2018-04-22 20:27:27.907 CEST [5398] ERROR:  column "atyla_development" does not exist at character 8
+2018-04-22 20:27:27.907 CEST [5398] STATEMENT:  SELECT atyla_development;
+2018-04-22 20:27:36.951 CEST [5398] ERROR:  syntax error at or near "USE" at character 1
+2018-04-22 20:27:36.951 CEST [5398] STATEMENT:  USE atyla_development;
