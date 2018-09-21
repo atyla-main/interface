@@ -1,14 +1,17 @@
 function sequelizeErrorsManager(err) {
   let errors = []
 
-  err.errors.forEach(error => {
-    errors.push({
-      source: error.value,
-      title: error.type,
-      detail: error.message
+  if (err && err.errors) {
+    err.errors.forEach(error => {
+      errors.push({
+        source: error.value,
+        title: error.type,
+        detail: error.message
+      })
     })
-  })
-  return { errors: errors }
+    return { errors: errors }
+  }
+  return { errors: err }
 }
 
 function globalErrorManager(err, url) {

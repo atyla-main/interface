@@ -81,3 +81,5 @@
 2018-04-22 20:27:27.907 CEST [5398] STATEMENT:  SELECT atyla_development;
 2018-04-22 20:27:36.951 CEST [5398] ERROR:  syntax error at or near "USE" at character 1
 2018-04-22 20:27:36.951 CEST [5398] STATEMENT:  USE atyla_development;
+2018-09-18 17:16:36.798 CEST [2163] FATAL:  lock file "postmaster.pid" already exists
+2018-09-18 17:16:36.798 CEST [2163] HINT:  Is another postmaster (PID 2031) running in data directory "/Users/trasto/AtylaImmo/interface/vendor/postgresql"?

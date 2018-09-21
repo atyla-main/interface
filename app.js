@@ -118,7 +118,7 @@ app.use('/api',  function(req, res, next) {
     if (info && info.name === 'TokenExpiredError') info.status = 401;
     if (info && info.name === 'JsonWebTokenError') info.status = 401;
     if (info && info.name === 'Error') info.status = 401;
-    if (err || !user) return res.send({
+    if (err || !user) return res.status(401).send({
       errors: [{
         status: '401',
         source: { pointer: req.path },

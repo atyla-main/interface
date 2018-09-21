@@ -8,6 +8,7 @@ const ProcessUpdate = require('../app/business/processes/update');
 const ProcessDestroy = require('../app/business/processes/destroy');
 const CollectionsValidation = require('../app/middleware/collections-validation');
 const IdValidation = require('../app/middleware/id-validation');
+const ProcessPdf = require('../app/business/custom-processes/pdf-generation');
 
 router.use(function timeLog(req, res, next) {
 	console.log('Time: ', Date.now());
@@ -19,7 +20,8 @@ router.get('/', function(req, res) {
 });
 
 
-router.post('/:collection', CollectionsValidation.validate, ProcessCreate.create)
+router.get('/pdf-generations/:id', ProcessPdf.generate)
+      .post('/:collection', CollectionsValidation.validate, ProcessCreate.create)
       .get('/:collection/:id', CollectionsValidation.validate, IdValidation.validate,  ProcessShow.show)
       .get('/:collection', CollectionsValidation.validate, ProcessIndex.index)
       .put('/:collection/:id', CollectionsValidation.validate, IdValidation.validate, ProcessUpdate.update)

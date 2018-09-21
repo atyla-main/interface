@@ -7,7 +7,7 @@ const moment = require('moment')
 
 module.exports = {
   async update(req, res, next) {
-    let attributes = req.body.data.attributes;
+    let attributes = req.body.data.attributes || {};
     let relationships = req.body.data.relationships;
 
     if (attributes.password) {

@@ -12,7 +12,7 @@ module.exports = {
           'email': user.email,
           'stage': user.stage
         },
-        relationships: await JSONRelationsExposingService.relationships(user, ['orders'])
+        relationships: await JSONRelationsExposingService.relationships(user, ['orders', 'contacts', 'mandates', 'negociators', 'offices', 'properties', 'settings'])
       }
     });
   }

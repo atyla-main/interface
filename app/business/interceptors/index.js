@@ -1,5 +1,7 @@
 const users = require('./users/create')
+const contacts = require('./contacts/index')
 
 module.exports = {
-  User: users
+  User: users,
+  Contact: contacts
 }

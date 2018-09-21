@@ -132,6 +132,30 @@ module.exports = (sequelize, DataTypes) => {
       User.belongsToMany(models.Role, {
         through: 'UserRoles'
       });
+      User.hasMany(models.Contact, {
+        as: 'contacts',
+        foreignKey: 'userUuid'
+      });
+      User.hasMany(models.Mandate, {
+        as: 'mandates',
+        foreignKey: 'userUuid'
+      });
+      User.hasMany(models.Negociator, {
+        as: 'negociators',
+        foreignKey: 'userUuid'
+      });
+      User.hasMany(models.Office, {
+        as: 'offices',
+        foreignKey: 'userUuid'
+      });
+      User.hasMany(models.Property, {
+        as: 'properties',
+        foreignKey: 'userUuid'
+      });
+      User.hasMany(models.Setting, {
+        as: 'settings',
+        foreignKey: 'userUuid'
+      });
     };
     return User;
   };

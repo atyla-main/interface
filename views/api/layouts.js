@@ -9,6 +9,12 @@ const Payment = require('./payment/payment');
 const Transaction = require('./transaction/transaction');
 const Cryptocurrency = require('./cryptocurrency/cryptocurrency');
 const Prospect = require('./prospect/prospect');
+const Contact = require('./contact/contact');
+const Mandate = require('./mandate/mandate');
+const Negociator = require('./negociator/negociator');
+const Office = require('./office/office');
+const Property = require('./property/property');
+const Setting = require('./setting/setting');
 
 module.exports = {
   icos: Ico,
@@ -21,5 +27,11 @@ module.exports = {
   payments: Payment,
   transactions: Transaction,
   cryptocurrencies: Cryptocurrency,
-  prospects: Prospect
+  prospects: Prospect,
+  contacts: Contact,
+  mandates: Mandate,
+  negociators: Negociator,
+  offices: Office,
+  properties: Property,
+  settings: Setting
 };
