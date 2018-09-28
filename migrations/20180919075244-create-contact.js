@@ -84,7 +84,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true
       },
-      weddingPacsSate: {
+      weddingPacsDate: {
         allowNull: true,
         type: Sequelize.DATE
       },

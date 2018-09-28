@@ -8,6 +8,7 @@ module.exports = {
         type: 'mandates',
         attributes: {
           'wording': mandate.wording,
+          'status': mandate.status,
           'internal-reference': mandate.internalReference,
           'negociator-on-contract': mandate.negociatorOnContract,
           'mandate-number': mandate.mandateNumber,

@@ -14,13 +14,13 @@ module.exports = {
       Password.encrypt(attributes);
     }
 
-    if (attributes.status) {
-      attributes.statusHistory = res.record.statusHistory
-      attributes.statusHistory.push({
-        status: attributes.status,
-        date: moment()
-      })
-    }
+    // if (attributes.status) {
+    //   attributes.statusHistory = res.record.statusHistory
+    //   attributes.statusHistory.push({
+    //     status: attributes.status,
+    //     date: moment()
+    //   })
+    // }
 
     await res.record.update(attributes, {
       fields: Object.keys(attributes)

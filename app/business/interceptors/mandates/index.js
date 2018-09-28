@@ -1,4 +1,4 @@
-const Contact = require('../../../../models').Contact
+const Mandate = require('../../../../models').Mandate
 
 module.exports = {
   index(req, res) {
@@ -6,8 +6,7 @@ module.exports = {
 
     if (req.query && req.query.userId) { body.userUuid = req.query.userId }
     if (req.query && req.query.status) { body.status = req.query.status }
-    if (req.query && req.query.mandateId) { body.mandateUuid = req.query.mandateId }
-    return Contact.findAll({
+    return Mandate.findAll({
       where: body
     })
   }

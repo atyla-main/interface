@@ -15,7 +15,7 @@ module.exports = {
           'address': property.address,
           'post-code': property.postCode,
           'city': property.city,
-          'coutry': property.coutry,
+          'country': property.country,
           'created-at': property.createdAt,
           'updated-at': property.updatedAt
         },

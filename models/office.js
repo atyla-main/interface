@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true
     },
-    coutry: {
+    country: {
       type: DataTypes.STRING,
       allowNull: true
     },
@@ -75,6 +75,18 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: false
     },
     headOfficeAddress: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    headOfficePostCode: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    headOfficeCity: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    headOfficeCountry: {
       type: DataTypes.STRING,
       allowNull: true
     },

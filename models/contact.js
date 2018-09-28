@@ -22,7 +22,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true
     },
-    coutry: {
+    country: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    website: {
       type: DataTypes.STRING,
       allowNull: true
     },
@@ -74,7 +78,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true
     },
-    weddingPacsSate: {
+    weddingPacsDate: {
       allowNull: true,
       type: DataTypes.DATE
     },

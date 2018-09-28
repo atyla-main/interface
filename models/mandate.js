@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
       type: DataTypes.STRING
     },
+    status: {
+      allowNull: true,
+      type: DataTypes.STRING
+    },
     internalReference: {
       allowNull: true,
       type: DataTypes.STRING
@@ -64,7 +68,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true
     },
     specialClause: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.JSONB),
       allowNull: true
     },
     documentsRequired: {

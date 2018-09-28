@@ -18,22 +18,22 @@ module.exports = {
 
     if (contacts.mediateur) {
       mediator = {
-        'civility': contacts.mediateur.civility,
-        'firstName': contacts.mediateur.firstName,
-        'lastName': contacts.mediateur.lastName,
-        'phone': contacts.mediateur.phone,
+        'civility': 'Mme',
+        'firstName': 'MARIE',
+        'lastName': 'DURAND',
+        'phone': '0111223344',
         'website': 'www.atyla.io',
-        'streetName': contacts.mediateur.address,
-        'zipCode': contacts.mediateur.postCode,
-        'city': contacts.mediateur.city
+        'streetName': '10 RUE CAMBON',
+        'zipCode': '75001',
+        'city': 'PARIS'
       }
     }
 
     if (contacts.notaire) {
       notary = {
-        'civility': contacts.notaire.civility,
-        'firstName': contacts.notaire.firstName,
-        'lastName': contacts.notaire.lastName
+        'civility': 'Maître',
+        'firstName': 'PIERRE',
+        'lastName': 'DUPONT'
       }
     }
 
@@ -48,7 +48,7 @@ module.exports = {
                 'carnetEntretien': mandate.documentsRequired.carnetEntretien,
                 'organisationImmeuble':mandate.documentsRequired.organisationImmeuble,
                 'person': mandate.documentsRequiredPerson,
-                'partsFillingDate': mandate.partsFilingDeadline
+                'partsFillingDate': '7'
               },
               'delegationOfPower': {
                 'proposer': mandate.delegationOfPower.proposer,
@@ -68,51 +68,51 @@ module.exports = {
                 'currency': mandate.lumpSum.currency
               },
               'inChargeOfRemuneration': mandate.inChargeOfRemuneration,
-              'penaltyClauseDuration': mandate.penaltyClauseDuration,
+              'penaltyClauseDuration': '12',
               'mandateAdvertisingDescription': mandate.mandateAdvertising
             },
             'office': {
-              'companyName': office.companyName,
-              'logo': office.logo,
-              'legalStatus': office.legalStatus,
+              'companyName': 'AGENCE IMMOBILIERE',
+              'logo': 'https://s3-eu-west-1.amazonaws.com/atyla/logo/logo.png',
+              'legalStatus': 'SARL',
               'socialCapitalAmount': {
-                'value': office.socialCapital.amount,
-                'currency': office.socialCapital.currency
+                'value': '10 000',
+                'currency': 'euros'
               },
-              'rcs': office.rcs,
-              'rcsCity': office.rcsCity,
-              'nafApe': office.nafApe,
+              'rcs': '815194210',
+              'rcsCity': 'PARIS',
+              'nafApe': '6831Z',
               'headOffice': {
                 'isHeadOffice': 'false',
-                'companyName': 'AGENCE IMMOBILIERE',
-                'streetName': '7 HAMEAU DE BOULAINVILLIERS',
-                'zipCode': '75016',
-                'city': 'Paris'
+                'companyName': 'SOCIETE DE GESTION IMMOBILIERE',
+                'streetName': '10 RUE CAMBON',
+                'zipCode': '75001',
+                'city': 'PARIS'
               },
-              'professionalCardNumber': office.professionalCard,
-              'professionalCardPlace': office.placeOfIssue,
-              'perceiveFunds': office.perceiveFunds,
-              'guarenteeFund': office.guaranteeFund,
-              'GuaranteeAmount': {
-                'value': office.gestionGuaranteesAmount.amount,
-                'currency': office.gestionGuaranteesAmount.currency
+              'professionalCardNumber': 'CPI75012016000004900',
+              'professionalCardPlace': 'PARIS',
+                'perceiveFunds': 'false',
+                'guarenteeFund': 'GALIAN',
+                'GuaranteeAmount': {
+                'value': '120 000',
+                'currency': 'euros'
               }
             },
             'negociator': {
-              'civility': negociator.civility,
-              'lastName': negociator.lastName,
-              'firstName': negociator.firstName,
-              'isCommercialAgent' : negociator.commercialAgent,
-              'RSAC' : negociator.rsac,
-              'RSAC_place': negociator.rsacPlace,
+              'civility': 'M.',
+              'lastName': 'LAGENT',
+              'firstName': 'JEAN',
+              'isCommercialAgent' : 'true',
+              'RSAC' : '118',
+              'RSAC_place': 'PARIS',
               'office': {
-                'companyName': negociatorOffice.companyName,
+                'companyName': 'SOCIETE DE GESTION IMMOBILIERE',
                 'phone': '0123456789',
                 'website': '',
-                'email': 'jeremy@atyla.io',
-                'streetName': negociatorOffice.address,
-                'zipCode': negociatorOffice.postCode,
-                'city': negociatorOffice.city
+                'email': 'jean@atyla.io',
+                'streetName': '10 RUE CAMBON',
+                'zipCode': '75001',
+                'city': 'PARIS'
               }
             },
             'property': {
