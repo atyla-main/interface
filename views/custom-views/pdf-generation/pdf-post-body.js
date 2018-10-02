@@ -36,15 +36,13 @@ module.exports = {
       'lastName': 'DUPONT'
     }
 
-    if (mandate.documentsRequired) {
-      documentsRequired = {
-        'surfaceCarrez': mandate.documentsRequired ? mandate.documentsRequired.surfaceCarrez : false,
-        'dossierTechnique': mandate.documentsRequired ? mandate.documentsRequired.dossierTechnique : false,
-        'carnetEntretien': mandate.documentsRequired ? mandate.documentsRequired.carnetEntretien : false,
-        'organisationImmeuble': mandate.documentsRequired ? mandate.documentsRequired.organisationImmeuble : false,
-        'person': mandate.documentsRequiredPerson ? mandate.documentsRequiredPerson : '',
-        'partsFillingDate': '7'
-      }
+    documentsRequired = {
+      'surfaceCarrez': mandate.documentsRequired ? mandate.documentsRequired.surfaceCarrez : false,
+      'dossierTechnique': mandate.documentsRequired ? mandate.documentsRequired.dossierTechnique : false,
+      'carnetEntretien': mandate.documentsRequired ? mandate.documentsRequired.carnetEntretien : false,
+      'organisationImmeuble': mandate.documentsRequired ? mandate.documentsRequired.organisationImmeuble : false,
+      'person': mandate.documentsRequiredPerson ? mandate.documentsRequiredPerson : 'Negociateur',
+      'partsFillingDate': '7'
     }
 
     if (property) {
