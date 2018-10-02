@@ -3,73 +3,90 @@ module.exports = {
     let principals = []
     let mediator = {}
     let notary = {}
+    let propertyValue = {}
+    let documentsRequired = {}
 
     if (contacts.mandant) {
       principals.push({
-        'civility': contacts.mandant.civility,
-        'firstName': contacts.mandant.firstName,
+        'civility': contacts.mandant.civility || '',
+        'firstName': contacts.mandant.firstName || '',
         'otherFirstName': ', first Name',
-        'LastName': contacts.mandant.lastName,
-        'streetName': contacts.mandant.address,
-        'zipCode': contacts.mandant.postCode,
-        'city': contacts.mandant.city
+        'LastName': contacts.mandant.lastName || '',
+        'streetName': contacts.mandant.address || '',
+        'zipCode': contacts.mandant.postCode || '',
+        'city': contacts.mandant.city || ''
       })
     }
 
-    if (contacts.mediateur) {
-      mediator = {
-        'civility': 'Mme',
-        'firstName': 'MARIE',
-        'lastName': 'DURAND',
-        'phone': '0111223344',
-        'website': 'www.atyla.io',
-        'streetName': '10 RUE CAMBON',
-        'zipCode': '75001',
-        'city': 'PARIS'
+    mediator = {
+      'civility': 'Mme',
+      'firstName': 'MARIE',
+      'lastName': 'DURAND',
+      'phone': '0111223344',
+      'website': 'www.atyla.io',
+      'streetName': '10 RUE CAMBON',
+      'zipCode': '75001',
+      'city': 'PARIS'
+    }
+
+
+    notary = {
+      'civility': 'Maître',
+      'firstName': 'PIERRE',
+      'lastName': 'DUPONT'
+    }
+
+    if (mandate.documentsRequired) {
+      documentsRequired = {
+        'surfaceCarrez': mandate.documentsRequired.surfaceCarrez || false,
+        'dossierTechnique': mandate.documentsRequired.dossierTechnique || false,
+        'carnetEntretien': mandate.documentsRequired.carnetEntretien || false,
+        'organisationImmeuble':mandate.documentsRequired.organisationImmeuble || false,
+        'person': mandate.documentsRequiredPerson || '',
+        'partsFillingDate': '7'
       }
     }
 
-    if (contacts.notaire) {
-      notary = {
-        'civility': 'Maître',
-        'firstName': 'PIERRE',
-        'lastName': 'DUPONT'
+    if (property) {
+      propertyValue = {
+        'propertyNature': property.propertyNature || '',
+        'co-ownership': property.coOwnership || '',
+        'description': property.description || '',
+        'streetName': property.address || '',
+        'zipCode': property.postCode || '',
+        'city': property.city || '',
+        'rentalState': property.rentalState || ''
       }
     }
 
     return ({
             'mandate': {
-              'id': mandate.uuid,
-              'mandateNumber': mandate.mandateNumber,
-              'reference': mandate.mandateReference,
-              'documentsRequired': {
-                'surfaceCarrez': mandate.documentsRequired.surfaceCarrez,
-                'dossierTechnique': mandate.documentsRequired.dossierTechnique,
-                'carnetEntretien': mandate.documentsRequired.carnetEntretien,
-                'organisationImmeuble':mandate.documentsRequired.organisationImmeuble,
-                'person': mandate.documentsRequiredPerson,
-                'partsFillingDate': '7'
-              },
+              'id': mandate.uuid || '',
+              'mandateNumber': mandate.mandateNumber || '',
+              'reference': mandate.mandateReference || '',
+              'documentsRequired': documentsRequired || '',
               'delegationOfPower': {
-                'proposer': mandate.delegationOfPower.proposer,
-                'visiter': mandate.delegationOfPower.visiter,
-                'publicite': mandate.delegationOfPower.publicite,
-                'total': mandate.delegationOfPower.totale
+                'proposer': mandate.delegationOfPower.proposer || '',
+                'visiter': mandate.delegationOfPower.visiter || '',
+                'publicite': mandate.delegationOfPower.publicite || '',
+                'total': mandate.delegationOfPower.totale || ''
               },
               'saleAmount': {
-                'value': mandate.saleAmount.amount,
-                'currency': mandate.saleAmount.currency
+                'value': mandate.saleAmount.amount || '',
+                'currency': mandate.saleAmount.currency || '',
+                'value_text': mandate.saleAmount.valueText || ''
               },
-              'escrowAccount': mandate.escrowAccount,
-              'remunerationType': mandate.remunerationType,
-              'percentage': mandate.percentage,
+              'escrowAccount': mandate.escrowAccount || '',
+              'remunerationType': mandate.remunerationType || '',
+              'percentage': mandate.percentage || '',
               'lumpSum': {
-                'value': mandate.lumpSum.amount,
-                'currency': mandate.lumpSum.currency
+                'value': mandate.lumpSum.amount || '',
+                'currency': mandate.lumpSum.currency || '',
+                'value_text': mandate.lumpSum.valueText || ''
               },
-              'inChargeOfRemuneration': mandate.inChargeOfRemuneration,
+              'inChargeOfRemuneration': mandate.inChargeOfRemuneration || '',
               'penaltyClauseDuration': '12',
-              'mandateAdvertisingDescription': mandate.mandateAdvertising
+              'mandateAdvertisingDescription': mandate.mandateAdvertising || ''
             },
             'office': {
               'companyName': 'AGENCE IMMOBILIERE',
@@ -115,15 +132,7 @@ module.exports = {
                 'city': 'PARIS'
               }
             },
-            'property': {
-              'propertyNature': property.propertyNature,
-              'co-ownership': property.coOwnership,
-              'description': property.description,
-              'streetName': property.address,
-              'zipCode': property.postCode,
-              'city': property.city,
-              'rentalState': property.rentalState
-            },
+            'property': propertyValue,
             'principal': principals,
             'notary': notary,
             'mediator': mediator

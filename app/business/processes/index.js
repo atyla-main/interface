@@ -8,6 +8,7 @@ module.exports = {
   async index(req, res, next) {
     let objs
 
+    console.log("QUERY", req.query);
     if (interceptors[res.collection_name] && interceptors[res.collection_name]['index']) {
       objs =  await interceptors[res.collection_name]['index'](req, res)
     } else {

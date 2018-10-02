@@ -9,6 +9,7 @@ const ProcessDestroy = require('../app/business/processes/destroy');
 const CollectionsValidation = require('../app/middleware/collections-validation');
 const IdValidation = require('../app/middleware/id-validation');
 const ProcessPdf = require('../app/business/custom-processes/pdf-generation');
+const ProcessSign = require('../app/business/custom-processes/sign-generation');
 const ProcessList = require('../app/business/custom-processes/contract-list');
 
 router.use(function timeLog(req, res, next) {
@@ -21,6 +22,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/contract-list/:id', ProcessList.contract)
+      .get('/sign-generations/:id', ProcessSign.sign)
       .get('/pdf-generations/:id', ProcessPdf.generate)
       .post('/:collection', CollectionsValidation.validate, ProcessCreate.create)
       .get('/:collection/:id', CollectionsValidation.validate, IdValidation.validate,  ProcessShow.show)
