@@ -38,11 +38,11 @@ module.exports = {
 
     if (mandate.documentsRequired) {
       documentsRequired = {
-        'surfaceCarrez': mandate.documentsRequired.surfaceCarrez || false,
-        'dossierTechnique': mandate.documentsRequired.dossierTechnique || false,
-        'carnetEntretien': mandate.documentsRequired.carnetEntretien || false,
-        'organisationImmeuble':mandate.documentsRequired.organisationImmeuble || false,
-        'person': mandate.documentsRequiredPerson || '',
+        'surfaceCarrez': mandate.documentsRequired ? mandate.documentsRequired.surfaceCarrez : false,
+        'dossierTechnique': mandate.documentsRequired ? mandate.documentsRequired.dossierTechnique : false,
+        'carnetEntretien': mandate.documentsRequired ? mandate.documentsRequired.carnetEntretien : false,
+        'organisationImmeuble': mandate.documentsRequired ? mandate.documentsRequired.organisationImmeuble : false,
+        'person': mandate.documentsRequiredPerson ? mandate.documentsRequiredPerson : '',
         'partsFillingDate': '7'
       }
     }
@@ -66,23 +66,23 @@ module.exports = {
               'reference': mandate.mandateReference || '',
               'documentsRequired': documentsRequired || '',
               'delegationOfPower': {
-                'proposer': mandate.delegationOfPower.proposer || '',
-                'visiter': mandate.delegationOfPower.visiter || '',
-                'publicite': mandate.delegationOfPower.publicite || '',
-                'total': mandate.delegationOfPower.totale || ''
+                'proposer': mandate.delegationOfPower ? mandate.delegationOfPower.proposer : false,
+                'visiter': mandate.delegationOfPower ? mandate.delegationOfPower.visiter : false,
+                'publicite': mandate.delegationOfPower ? mandate.delegationOfPower.publicite : false,
+                'total': mandate.delegationOfPower ? mandate.delegationOfPower.totale : false,
               },
               'saleAmount': {
-                'value': mandate.saleAmount.amount || '',
-                'currency': mandate.saleAmount.currency || '',
-                'value_text': mandate.saleAmount.valueText || ''
+                'value': mandate.saleAmount.amount || '100',
+                'currency': mandate.saleAmount.currency || 'euros',
+                'value_text': mandate.saleAmount.valueText || 'cents'
               },
               'escrowAccount': mandate.escrowAccount || '',
               'remunerationType': mandate.remunerationType || '',
-              'percentage': mandate.percentage || '',
+              'percentage': mandate.percentage || '0.1',
               'lumpSum': {
-                'value': mandate.lumpSum.amount || '',
-                'currency': mandate.lumpSum.currency || '',
-                'value_text': mandate.lumpSum.valueText || ''
+                'value': mandate.lumpSum.amount || '100',
+                'currency': mandate.lumpSum.currency || 'euros',
+                'value_text': mandate.lumpSum.valueText || 'cent'
               },
               'inChargeOfRemuneration': mandate.inChargeOfRemuneration || '',
               'penaltyClauseDuration': '12',
