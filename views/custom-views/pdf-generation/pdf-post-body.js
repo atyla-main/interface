@@ -5,8 +5,11 @@ module.exports = {
     let notary = {}
     let propertyValue = {}
     let documentsRequired = {}
+    let escrowAccount = ''
 
-    let escrowAccount = mandant.escrowAccount === 'Notaire' ? 'Notaire en charge du dossier' : mandant.escrowAccount
+    if (mandate) {
+      let escrowAccount = mandate.escrowAccount === 'Notaire' ? 'Notaire en charge du dossier' : mandate.escrowAccount
+    }
 
     if (contacts.mandant) {
       principals.push({
