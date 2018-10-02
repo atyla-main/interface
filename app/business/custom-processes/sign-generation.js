@@ -56,7 +56,6 @@ module.exports = {
          response.on("end", async function() {
              var jsfile = new Buffer.concat(chunks).toString('base64');
 
-
              let signRes = await fetch('https://staging-api.yousign.com/files', {
                method: 'POST',
                body: JSON.stringify({

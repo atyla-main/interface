@@ -8,8 +8,8 @@ module.exports = {
         {
           "firstname": member.firstName,
           "lastname": member.lastName,
-          "email": "vincent@atyla.io",
-          "phone": "+33625841219",
+          "email": member.email || "vincent@atyla.io",
+          "phone": member.phone || "+33625841219",
           "fileObjects": [
             {
               "position": "191,77,346,139",

@@ -21,7 +21,7 @@ router.get('/', function(req, res) {
 	res.send('Welcome to the api');
 });
 
-router.get('/contract-list/:id', ProcessList.contract)
+router.get('/contract-list', ProcessList.contract)
       .get('/sign-generations/:id', ProcessSign.sign)
       .get('/pdf-generations/:id', ProcessPdf.generate)
       .post('/:collection', CollectionsValidation.validate, ProcessCreate.create)

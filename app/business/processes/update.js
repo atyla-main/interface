@@ -14,6 +14,10 @@ module.exports = {
       Password.encrypt(attributes);
     }
 
+    if (attributes.email) {
+      attributes.email = attributes.email.toLowerCase();
+    }
+
     // if (attributes.status) {
     //   attributes.statusHistory = res.record.statusHistory
     //   attributes.statusHistory.push({

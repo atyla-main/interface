@@ -81,7 +81,12 @@ app.post('/login', async function(req, res) {
 		});
 	}
 
-	const attributes = req.body.data.attributes;
+	 const attributes = req.body.data.attributes;
+
+   if (attributes.email) {
+     attributes.email = attributes.email.toLowerCase();
+   }
+
 	if (attributes.email && attributes.password) {
 		var email = attributes.email;
 		var password = attributes.password;

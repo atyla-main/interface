@@ -6,11 +6,13 @@ module.exports = {
     let propertyValue = {}
     let documentsRequired = {}
 
+    let escrowAccount = mandant.escrowAccount === 'Notaire' ? 'Notaire en charge du dossier' : mandant.escrowAccount
+
     if (contacts.mandant) {
       principals.push({
         'civility': contacts.mandant.civility || '',
         'firstName': contacts.mandant.firstName || '',
-        'otherFirstName': ', first Name',
+        'otherFirstName': '',
         'LastName': contacts.mandant.lastName || '',
         'streetName': contacts.mandant.address || '',
         'zipCode': contacts.mandant.postCode || '',
@@ -70,17 +72,17 @@ module.exports = {
                 'total': mandate.delegationOfPower ? mandate.delegationOfPower.totale : false,
               },
               'saleAmount': {
-                'value': mandate.saleAmount.amount || '100',
-                'currency': mandate.saleAmount.currency || 'euros',
-                'value_text': mandate.saleAmount.valueText || 'cents'
+                'value': mandate.saleAmount ? mandate.saleAmount.amount : '100',
+                'currency': mandate.saleAmount ? mandate.saleAmount.currency : 'euros',
+                'value_text': mandate.saleAmount ? mandate.saleAmount.valueText : 'cents'
               },
-              'escrowAccount': mandate.escrowAccount || '',
+              'escrowAccount': escrowAccount || '',
               'remunerationType': mandate.remunerationType || '',
               'percentage': mandate.percentage || '0.1',
               'lumpSum': {
-                'value': mandate.lumpSum.amount || '100',
-                'currency': mandate.lumpSum.currency || 'euros',
-                'value_text': mandate.lumpSum.valueText || 'cent'
+                'value': mandate.lumpSum ? mandate.lumpSum.amount : '100',
+                'currency': mandate.lumpSum ? mandate.lumpSum.currency : 'euros',
+                'value_text': mandate.lumpSum ? mandate.lumpSum.valueText : 'cent'
               },
               'inChargeOfRemuneration': mandate.inChargeOfRemuneration || '',
               'penaltyClauseDuration': '12',
