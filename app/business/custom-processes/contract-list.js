@@ -28,7 +28,8 @@ module.exports = {
         createdAt: mandate.createdAt,
         property: property && property.address ? property.address : '',
         mandant: `${data.firstName} ${data.lastName}`,
-        number: mandate.mandateNumber || ''
+        number: mandate.mandateNumber || '',
+        id: mandate.uuid
       })
     }
 
