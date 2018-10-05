@@ -1,4 +1,6 @@
 'use strict';
+const moment = require('moment')
+const _ = require('lodash')
 
 module.exports = (sequelize, DataTypes) => {
   var Mandate = sequelize.define('Mandate', {
@@ -29,7 +31,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     signatureDate: {
       type: DataTypes.DATE,
-      allowNull: true
+      allowNull: true,
+      get() {
+        if (this.getDataValue('signatureDate')) {
+          return moment(this.getDataValue('signatureDate')).format('DD-MM-YYYY');
+        }
+      }
     },
     saleAmount: {
       type: DataTypes.JSONB,
@@ -95,7 +102,24 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.DATE
     }
-  }, {});
+  }, {
+    hooks: {
+      beforeCreate: (mandate, options) => {
+        if (!_.isEmpty(mandate.signatureDate) && moment(mandate.signatureDate,'DD-MM-YYYY', true).isValid()) {
+          mandate.signatureDate = moment(mandate.signatureDate,'DD-MM-YYYY').format()
+        } else {
+          delete mandate['signatureDate']
+        }
+      },
+      beforeUpdate: (mandate, options) => {
+        if (!_.isEmpty(mandate.signatureDate) && moment(mandate.signatureDate,'DD-MM-YYYY', true).isValid()) {
+          mandate.signatureDate = moment(mandate.signatureDate,'DD-MM-YYYY').format()
+        } else {
+          delete mandate['signatureDate']
+        }
+      }
+    }
+  });
   Mandate.associate = function(models) {
     Mandate.belongsTo(models.User, {
       foreignKey: 'userUuid'

@@ -1,4 +1,7 @@
 'use strict';
+const moment = require('moment')
+const _ = require('lodash')
+
 module.exports = (sequelize, DataTypes) => {
   var Contact = sequelize.define('Contact', {
     uuid: {
@@ -80,7 +83,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     weddingPacsDate: {
       allowNull: true,
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      get() {
+        if (this.getDataValue('weddingPacsDate')) {
+          return moment(this.getDataValue('weddingPacsDate')).format('DD-MM-YYYY');
+        }
+      }
     },
     weddingPacsPlace: {
       type: DataTypes.STRING,
@@ -88,7 +96,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     birthDate: {
       allowNull: true,
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      get() {
+        if (this.getDataValue('birthDate')) {
+          return moment(this.getDataValue('birthDate')).format('DD-MM-YYYY');
+        }
+      }
     },
     birthPlace: {
       type: DataTypes.STRING,
@@ -154,7 +167,36 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.DATE
     }
-  }, {});
+  }, {
+    hooks: {
+      beforeCreate: (contact, options) => {
+        if (!_.isEmpty(contact.weddingPacsDate) && moment(contact.weddingPacsDate,'DD-MM-YYYY', true).isValid()) {
+          contact.weddingPacsDate = moment(contact.weddingPacsDate,'DD-MM-YYYY').format()
+        } else {
+          delete contact['weddingPacsDate']
+        }
+
+        if (!_.isEmpty(contact.birthDate) && moment(contact.birthDate,'DD-MM-YYYY', true).isValid()) {
+          contact.birthDate = moment(contact.birthDate,'DD-MM-YYYY').format()
+        } else {
+          delete contact['birthDate']
+        }
+      },
+      beforeUpdate: (contact, options) => {
+        if (!_.isEmpty(contact.weddingPacsDate) && moment(contact.weddingPacsDate,'DD-MM-YYYY', true).isValid()) {
+          contact.weddingPacsDate = moment(contact.weddingPacsDate,'DD-MM-YYYY').format()
+        } else {
+          delete contact['weddingPacsDate']
+        }
+
+        if (!_.isEmpty(contact.birthDate) && moment(contact.birthDate,'DD-MM-YYYY', true).isValid()) {
+          contact.birthDate = moment(contact.birthDate,'DD-MM-YYYY').format()
+        } else {
+          delete contact['birthDate']
+        }
+      }
+    }
+  });
   Contact.associate = function(models) {
     Contact.belongsTo(models.User, {
       foreignKey: 'userUuid'
