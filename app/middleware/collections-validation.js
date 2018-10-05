@@ -3,7 +3,6 @@ const pluralize = require('pluralize')
 const _ = require('lodash');
 
 function getModel(collection_name, next) {
-  console.log("collection_name:", collection_name);
   let model = Models[collection_name];
 
   if (!model) {
