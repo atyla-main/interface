@@ -32,7 +32,7 @@ module.exports = {
     res.locals.error = req.app.get('env') === 'development' ? err : {};
 
     if (!err.status && res.sequelizeError) {
-      return res.status(500).send(sequelizeErrorsManager(err))
+      return res.status(422).send(sequelizeErrorsManager(err))
     }
 
     return res.status(err.status || 500)
