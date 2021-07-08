@@ -59,6 +59,7 @@ module.exports = (sequelize, DataTypes) => {
       stage: {
         type: DataTypes.STRING,
         allowNull: true,
+        defaultValue: 'inscription',
         validate: {
           isIn: [['inscription', 'confirmation_send', 'confirmed', 'kyc_send', 'validated', 'denied', 'unsubscribed']]
         }
@@ -130,6 +131,30 @@ module.exports = (sequelize, DataTypes) => {
     User.associate = models => {
       User.belongsToMany(models.Role, {
         through: 'UserRoles'
+      });
+      User.hasMany(models.Contact, {
+        as: 'contacts',
+        foreignKey: 'userUuid'
+      });
+      User.hasMany(models.Mandate, {
+        as: 'mandates',
+        foreignKey: 'userUuid'
+      });
+      User.hasMany(models.Negociator, {
+        as: 'negociators',
+        foreignKey: 'userUuid'
+      });
+      User.hasMany(models.Office, {
+        as: 'offices',
+        foreignKey: 'userUuid'
+      });
+      User.hasMany(models.Property, {
+        as: 'properties',
+        foreignKey: 'userUuid'
+      });
+      User.hasMany(models.Setting, {
+        as: 'settings',
+        foreignKey: 'userUuid'
       });
     };
     return User;
